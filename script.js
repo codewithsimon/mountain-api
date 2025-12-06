@@ -141,23 +141,42 @@ function setupInteractiveDemo() {
 
     if (!mountainSelect || !demoOutput) return;
 
-    mountainSelect.addEventListener('change', function() {
+    mountainSelect.addEventListener('change', async function() {
         const selectedMountain = this.value;
 
-        if (selectedMountain && mountainData[selectedMountain]) {
-            const data = mountainData[selectedMountain];
-            const jsonString = JSON.stringify(data, null, 2);
-
+        if (selectedMountain) {
             demoOutput.innerHTML = `
                 <div class="code-block-wrapper">
-                    <button class="copy-button" data-target="demo-code">Copy</button>
-                    <pre class="code-block" id="demo-code"><code>${jsonString}</code></pre>
+                    <pre class="code-block"><code>Loading...</code></pre>
                 </div>
             `;
-
             demoOutput.classList.add('active');
 
-            setupCopyButtons();
+            try {
+                const response = await fetch(`https://vybfqgaiisoqakiaueoh.supabase.co/functions/v1/mountains/${selectedMountain}`);
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch mountain data');
+                }
+
+                const data = await response.json();
+                const jsonString = JSON.stringify(data, null, 2);
+
+                demoOutput.innerHTML = `
+                    <div class="code-block-wrapper">
+                        <button class="copy-button" data-target="demo-code">Copy</button>
+                        <pre class="code-block" id="demo-code"><code>${jsonString}</code></pre>
+                    </div>
+                `;
+
+                setupCopyButtons();
+            } catch (error) {
+                demoOutput.innerHTML = `
+                    <div class="code-block-wrapper">
+                        <pre class="code-block" style="color: #fc8181;"><code>Error: ${error.message}</code></pre>
+                    </div>
+                `;
+            }
         } else {
             demoOutput.classList.remove('active');
             demoOutput.innerHTML = '';

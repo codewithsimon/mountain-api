@@ -84,7 +84,7 @@
         <section class="api-examples" id="api-examples">
             <div class="container">
                 <h2 class="section-title">API Examples</h2>
-                <p class="section-subtitle">See how easy it is to work with our API</p>
+                <p class="section-subtitle">See how easy it is to work with our API - No API key required!</p>
 
                 <div class="example-block">
                     <h3>Get Mountain by ID</h3>
@@ -110,12 +110,12 @@
   "difficulty": "Extreme"
 }</code></pre>
                     </div>
-                    <div class="endpoint-tag">GET /mountains/everest</div>
+                    <div class="endpoint-tag">GET https://vybfqgaiisoqakiaueoh.supabase.co/functions/v1/mountains/everest</div>
                 </div>
 
                 <div class="example-block">
                     <h3>Search Mountains with Filters</h3>
-                    <p class="example-description">Filter mountains by country, minimum height, and other parameters.</p>
+                    <p class="example-description">Filter mountains by country, height range, or mountain range. Available parameters: <code>country</code>, <code>min_height</code>, <code>max_height</code>, <code>range</code></p>
                     <div class="code-block-wrapper">
                         <button class="copy-button" data-target="example2">Copy</button>
                         <pre class="code-block" id="example2"><code>{
@@ -142,7 +142,7 @@
   ]
 }</code></pre>
                     </div>
-                    <div class="endpoint-tag">GET /mountains?country=Nepal&min_height=6000</div>
+                    <div class="endpoint-tag">GET https://vybfqgaiisoqakiaueoh.supabase.co/functions/v1/mountains?country=Nepal&min_height=6000</div>
                 </div>
 
                 <!-- Interactive Demo -->
@@ -206,8 +206,8 @@
                     </div>
                     <div class="step">
                         <div class="step-number">2</div>
-                        <h3>Get Your API Key</h3>
-                        <p>Receive your unique API key instantly. No credit card required for the free tier.</p>
+                        <h3>No API Key Needed</h3>
+                        <p>Our API is completely free and open. No authentication or API keys required to get started.</p>
                     </div>
                     <div class="step">
                         <div class="step-number">3</div>
@@ -221,8 +221,7 @@
                         <h4>Using cURL</h4>
                         <div class="code-block-wrapper">
                             <button class="copy-button" data-target="curl-example">Copy</button>
-                            <pre class="code-block" id="curl-example"><code>curl -X GET "https://api.mountain.dev/mountains/everest" \
-     -H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+                            <pre class="code-block" id="curl-example"><code>curl -X GET "https://vybfqgaiisoqakiaueoh.supabase.co/functions/v1/mountains/everest"</code></pre>
                         </div>
                     </div>
 
@@ -230,11 +229,7 @@
                         <h4>Using JavaScript (Fetch API)</h4>
                         <div class="code-block-wrapper">
                             <button class="copy-button" data-target="js-example">Copy</button>
-                            <pre class="code-block" id="js-example"><code>fetch('https://api.mountain.dev/mountains/everest', {
-  headers: {
-    'Authorization': 'Bearer YOUR_API_KEY'
-  }
-})
+                            <pre class="code-block" id="js-example"><code>fetch('https://vybfqgaiisoqakiaueoh.supabase.co/functions/v1/mountains/everest')
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.error('Error:', error));</code></pre>

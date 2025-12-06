@@ -306,6 +306,15 @@ body {
     margin-bottom: 24px;
 }
 
+.example-description code {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    color: var(--primary-blue);
+}
+
 .code-block-wrapper {
     position: relative;
     background-color: #2d3748;
